@@ -1,11 +1,11 @@
 # The TARGET variable determines what target system the application is
 # compiled for. It either refers to an XN file in the source directories
 # or a valid argument for the --target option when compiling
+ifeq ($(CONFIG), xs3) 
+	TARGET = XCORE-VISION-EXPLORER-500
+endif
 ifeq ($(CONFIG), xs2) 
 	TARGET = SLICEKIT-XC200-X1
-endif
-ifeq ($(CONFIG), xs1) 
-	TARGET = SLICEKIT-A16
 endif
 
 # The APP_NAME variable determines the name of the final .xe file. It should
@@ -23,12 +23,12 @@ USED_MODULES = lib_sdram
 # xcc for the final link (mapping) stage.
 BUILD_FLAGS = -g -O2
 
+#xcore.ai vision
+XCC_FLAGS_xs3 = $(BUILD_FLAGS)
+INCLUDE_ONLY_IN_xs3 = 
 #xCORE200 slicekit
 XCC_FLAGS_xs2 = $(BUILD_FLAGS)
 INCLUDE_ONLY_IN_xs2 = 
-#XS1-A slicekit
-XCC_FLAGS_xs1 = $(BUILD_FLAGS)
-INCLUDE_ONLY_IN_xs1 = 
 
 # The VERBOSE variable, if set to 1, enables verbose output from the make system.
 VERBOSE = 0

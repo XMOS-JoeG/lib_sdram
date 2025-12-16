@@ -66,7 +66,7 @@ void application(streaming chanend c_server) {
 }
 
 //Use port mapping according to slicekit used
-#ifdef __XS2A__
+
 //Triangle slot tile 0 for XU216
 #define      SERVER_TILE            0
 on tile[SERVER_TILE] : out buffered port:32   sdram_dq_ah                 = XS1_PORT_16B;
@@ -75,16 +75,6 @@ on tile[SERVER_TILE] : out buffered port:32   sdram_ras                   = XS1_
 on tile[SERVER_TILE] : out buffered port:8    sdram_we                    = XS1_PORT_1K;
 on tile[SERVER_TILE] : out port               sdram_clk                   = XS1_PORT_1L;
 on tile[SERVER_TILE] : clock                  sdram_cb                    = XS1_CLKBLK_2;
-#else
-//Square slot on A16 slicekit
-#define      SERVER_TILE            1
-on tile[SERVER_TILE] : out buffered port:32   sdram_dq_ah                 = XS1_PORT_16A;
-on tile[SERVER_TILE] : out buffered port:32   sdram_cas                   = XS1_PORT_1B;
-on tile[SERVER_TILE] : out buffered port:32   sdram_ras                   = XS1_PORT_1G;
-on tile[SERVER_TILE] : out buffered port:8    sdram_we                    = XS1_PORT_1C;
-on tile[SERVER_TILE] : out port               sdram_clk                   = XS1_PORT_1F;
-on tile[SERVER_TILE] : clock                  sdram_cb                    = XS1_CLKBLK_2;
-#endif
 
 int main() {
   streaming chan c_sdram[1];

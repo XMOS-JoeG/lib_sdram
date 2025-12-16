@@ -1,7 +1,7 @@
 // Copyright 2014-2021 XMOS LIMITED.
 // This Software is subject to the terms of the XMOS Public Licence: Version 1.
 .text
-#ifdef __XS2A__
+#if defined(__XS2A__) || defined(__XS3A__)
 //xCore 200 optimised version with support for >8bit row addresses
 .cc_top sdram_block_write.function
 .align 4
@@ -185,7 +185,7 @@ sdram_block_write:
 
 //////////////////////////////////////////////////////////////////
 
-#ifdef __XS2A__
+#if defined(__XS2A__) || defined(__XS3A__)
 //xCore 200 optimised version with support for >8bit row addresses
 .cc_top sdram_block_read.function
 .align 4
